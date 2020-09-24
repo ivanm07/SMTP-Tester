@@ -161,16 +161,12 @@ namespace SmtpTester
 		}
 
 		protected void FireLogOutput(string message) {
-			if (LogOutput != null) {
-				LogOutput(message);
-			}
-		}
+            LogOutput?.Invoke(message);
+        }
 
 		protected void FireResponseReceived(bool isError) {
-			if (ResponseReceived != null) {
-				ResponseReceived(isError);
-			}
-		}
+            ResponseReceived?.Invoke(isError);
+        }
 	}
 
 	public class SmtpResponseException : Exception
