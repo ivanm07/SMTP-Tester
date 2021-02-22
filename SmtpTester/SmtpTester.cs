@@ -121,7 +121,7 @@ namespace SmtpTester
                 return;
             }
 
-            txtOutput.AppendText(String.Concat(text, System.Environment.NewLine));
+            txtOutput.AppendText(string.Concat(text, Environment.NewLine));
         }
 
         protected delegate void SetErrorDisplayDelegate(bool isError);
@@ -146,7 +146,7 @@ namespace SmtpTester
             }
 
             IsErrorCondition = false;
-            txtOutput.BackColor = System.Drawing.SystemColors.Window;
+            txtOutput.BackColor = SystemColors.Window;
         }
 
         protected delegate void ShowLoadingDelegate(bool show);
