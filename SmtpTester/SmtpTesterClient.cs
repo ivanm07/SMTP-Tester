@@ -85,11 +85,27 @@ namespace SmtpTester
 			}
 		}
 
-		public async Task TestEmail(string to, string cc = null, string bcc = null, string subject = null, string body = null) {
+		public async Task TestEmail(bool default_credentials = true, string host = "", int port = 25, bool ssl = false, string username = "", string password = "", string from = "", string to = "", string cc = null, string bcc = null, string subject = null, string body = null) {
 			ClearErrors();
 
 			using (var client = new SmtpClient())
 			using (var msg = new MailMessage()) {
+                if (!default_credentials)
+                {
+					client.Host = host;
+					client.Port = port;
+					client.EnableSsl = ssl;
+					client.Credentials = new NetworkCredential()
+					{
+						UserName = username,
+						Password = password
+					};
+				}
+
+				if (!String.IsNullOrEmpty(from))
+				{
+					msg.From = new MailAddress(from);
+				}
 				if (!String.IsNullOrEmpty(to)) {
 					msg.To.Add(to);
 				}
