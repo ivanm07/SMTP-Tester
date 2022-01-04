@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "ea25007d-d844-4d32-a770-b864fed72dfc": {
+      "ProjectGuid": "ea25007d-d844-4d32-a770-b864fed72dfc",
+      "DisplayName": "SmtpTester",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
