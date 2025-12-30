@@ -19,6 +19,7 @@ namespace SmtpTester
 	{
 		public event LogOutputHandler LogOutput;
 		public event ResponseHandler ResponseReceived;
+        public SslProtocols SslProtocols { get; set; } = SslProtocols.Tls12;
 
 		AggregateException ServerException { get; set; }
 
@@ -50,7 +51,8 @@ namespace SmtpTester
 						using (var sslStream = new SslStream(stream, true, ValidateRemoteCertificate, null, EncryptionPolicy.RequireEncryption)) {
 							// Disable SSLv3 to avoid POODLE
 							// Should disable TLS 1.0 to avoid BEAST, but need it to support servers prior to Windows Server 2008 R2 and OpenSSL 1.0.1
-							await sslStream.AuthenticateAsClientAsync(server, null, SslProtocols.Tls | SslProtocols.Tls11 | SslProtocols.Tls12, true);
+
+							await sslStream.AuthenticateAsClientAsync(server, null, SslProtocols, true);
 							
 							var sslOutput = new StringBuilder();
 							sslOutput.AppendLine("Authentication negotiated:");
@@ -88,7 +90,7 @@ namespace SmtpTester
 		public async Task TestEmail(bool default_credentials = true, string host = "", int port = 25, bool ssl = false, string username = "", string password = "", string from = "", string to = "", string cc = null, string bcc = null, string subject = null, string body = null) {
 			ClearErrors();
 
-			using (var client = new SmtpClient())
+            using (var client = new SmtpClient())
 			using (var msg = new MailMessage()) {
                 if (!default_credentials)
                 {

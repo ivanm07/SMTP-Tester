@@ -55,6 +55,9 @@
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.lblUsername = new System.Windows.Forms.Label();
             this.pbLoading = new System.Windows.Forms.PictureBox();
+            this.chkTLS1 = new System.Windows.Forms.CheckBox();
+            this.chkTLS11 = new System.Windows.Forms.CheckBox();
+            this.chkTLS12 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,6 +102,7 @@
             this.chkEnableTLS.TabIndex = 4;
             this.chkEnableTLS.Text = "TLS";
             this.chkEnableTLS.UseVisualStyleBackColor = true;
+            this.chkEnableTLS.CheckedChanged += new System.EventHandler(this.chkEnableTLS_CheckedChanged);
             // 
             // lblFrom
             // 
@@ -281,11 +285,53 @@
             this.pbLoading.TabStop = false;
             this.pbLoading.Visible = false;
             // 
+            // chkTLS1
+            // 
+            this.chkTLS1.AutoSize = true;
+            this.chkTLS1.Checked = true;
+            this.chkTLS1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkTLS1.Location = new System.Drawing.Point(16, 66);
+            this.chkTLS1.Name = "chkTLS1";
+            this.chkTLS1.Size = new System.Drawing.Size(64, 17);
+            this.chkTLS1.TabIndex = 26;
+            this.chkTLS1.Text = "TLS 1.0";
+            this.chkTLS1.UseVisualStyleBackColor = true;
+            this.chkTLS1.Visible = false;
+            // 
+            // chkTLS11
+            // 
+            this.chkTLS11.AutoSize = true;
+            this.chkTLS11.Checked = true;
+            this.chkTLS11.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkTLS11.Location = new System.Drawing.Point(86, 66);
+            this.chkTLS11.Name = "chkTLS11";
+            this.chkTLS11.Size = new System.Drawing.Size(64, 17);
+            this.chkTLS11.TabIndex = 27;
+            this.chkTLS11.Text = "TLS 1.1";
+            this.chkTLS11.UseVisualStyleBackColor = true;
+            this.chkTLS11.Visible = false;
+            // 
+            // chkTLS12
+            // 
+            this.chkTLS12.AutoSize = true;
+            this.chkTLS12.Checked = true;
+            this.chkTLS12.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkTLS12.Location = new System.Drawing.Point(153, 66);
+            this.chkTLS12.Name = "chkTLS12";
+            this.chkTLS12.Size = new System.Drawing.Size(64, 17);
+            this.chkTLS12.TabIndex = 28;
+            this.chkTLS12.Text = "TLS 1.2";
+            this.chkTLS12.UseVisualStyleBackColor = true;
+            this.chkTLS12.Visible = false;
+            // 
             // SmtpTester
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 595);
+            this.Controls.Add(this.chkTLS12);
+            this.Controls.Add(this.chkTLS11);
+            this.Controls.Add(this.chkTLS1);
             this.Controls.Add(this.pbLoading);
             this.Controls.Add(this.chkDefaultCredentials);
             this.Controls.Add(this.txtPassword);
@@ -349,6 +395,9 @@
 		private System.Windows.Forms.TextBox txtUsername;
 		private System.Windows.Forms.Label lblUsername;
 		private System.Windows.Forms.PictureBox pbLoading;
-	}
+        private System.Windows.Forms.CheckBox chkTLS1;
+        private System.Windows.Forms.CheckBox chkTLS11;
+        private System.Windows.Forms.CheckBox chkTLS12;
+    }
 }
 

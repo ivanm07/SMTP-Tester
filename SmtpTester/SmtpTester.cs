@@ -49,7 +49,10 @@ namespace SmtpTester
                 AppendOutput("\nInitiating connection...");
                 ClearErrorDisplay();
                 ShowLoading(true);
-
+                smtpClient.SslProtocols = 
+                    (chkTLS1.Checked ? System.Security.Authentication.SslProtocols.Tls : 0) |
+                    (chkTLS11.Checked ? System.Security.Authentication.SslProtocols.Tls11 : 0) |
+                    (chkTLS12.Checked ? System.Security.Authentication.SslProtocols.Tls12 : 0);
                 await smtpClient.TestConnection(server, port, chkEnableTLS.Checked);
             }
             catch (Exception ex)
@@ -80,6 +83,23 @@ namespace SmtpTester
 
                 AppendOutput(String.Format("Message sent to {0} {1} {2}.", to, cc, bcc));
                 SetErrorDisplay(false);
+            }
+            catch (Exception ex)
+            {
+                AppendOutput(GetErrorString(ex));
+                SetErrorDisplay(true);
+            }
+            finally
+            {
+                ShowLoading(false);
+            }
+        }
+
+        protected void chkEnableTLS_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                chkTLS1.Visible = chkTLS11.Visible = chkTLS12.Visible = chkEnableTLS.Checked;
             }
             catch (Exception ex)
             {
